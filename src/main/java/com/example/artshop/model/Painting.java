@@ -16,16 +16,38 @@ public class Painting {
     private double width;
     private double height;
     private String imageURL;
+    private double price;
+    private int yearCreated;
 
     public Painting() {
     }
 
-    public Painting(String title, String artist, double width, double height, String imageURL) {
+    public Painting(String title, String artist, double width, double height, String imageURL, double price, int yearCreated) {
         this.title = title;
         this.artist = artist;
         this.width = width;
         this.height = height;
         this.imageURL = imageURL;
+        this.price = price;
+        this.yearCreated = yearCreated;
+    }
+
+    // existing getters and setters...
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public int getYearCreated() {
+        return yearCreated;
+    }
+
+    public void setYearCreated(int yearCreated) {
+        this.yearCreated = yearCreated;
     }
 
     public Long getId() {
@@ -75,7 +97,6 @@ public class Painting {
     public void setImageURL(String imageURL) {
         this.imageURL = imageURL;
     }
-
 }
 // Этот класс представляет сущность Painting, которая будет сохраняться в базе данных.
 // Класс содержит основные атрибуты картины, такие как название, художник, ширина,

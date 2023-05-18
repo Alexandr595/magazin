@@ -3,11 +3,8 @@ package com.example.artshop.controller;
 import com.example.artshop.model.Clothing;
 import com.example.artshop.service.ClothingService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -15,16 +12,33 @@ import java.util.List;
 @RequestMapping("/api/clothing")
 public class ClothingController {
 
+    private final ClothingService clothingService;
+
     @Autowired
-    private ClothingService clothingService;
+    public ClothingController(ClothingService clothingService) {
+        this.clothingService = clothingService;
+    }
 
     @GetMapping
     public List<Clothing> getAllClothing() {
-        return clothingService.getAllClothing();
+        return clothingService.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Clothing> getClothingById(@PathVariable Long id) {
+        return clothingService.findById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
     public Clothing addClothing(@RequestBody Clothing clothing) {
-        return clothingService.addClothing(clothing);
+        return clothingService.save(clothing);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteClothing(@PathVariable Long id) {
+        clothingService.deleteById(id);
+        return ResponseEntity.ok().build();
     }
 }

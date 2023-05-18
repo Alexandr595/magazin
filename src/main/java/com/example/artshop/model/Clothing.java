@@ -11,20 +11,51 @@ public class Clothing {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
     private String description;
     private double price;
     private String imageUrl;
+    private String size;
+    private String color;
+    private int quantityInStock;
 
     public Clothing() {
     }
 
-    public Clothing(String name, String description, double price, String imageUrl) {
+    public Clothing(String name, String description, double price, String imageUrl, String size, String color, int quantityInStock) {
         this.name = name;
         this.description = description;
         this.price = price;
         this.imageUrl = imageUrl;
+        this.size = size;
+        this.color = color;
+        this.quantityInStock = quantityInStock;
+    }
+
+    // existing getters and setters...
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public int getQuantityInStock() {
+        return quantityInStock;
+    }
+
+    public void setQuantityInStock(int quantityInStock) {
+        this.quantityInStock = quantityInStock;
     }
 
     public Long getId() {
