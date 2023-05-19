@@ -1,20 +1,13 @@
 package com.example.artshop.model;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-public class Clothing {
+@Table(name = "clothing")
+public class Clothing extends Product {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String name;
     private String description;
-    private double price;
-    private String imageUrl;
     private String size;
     private String color;
     private int quantityInStock;
@@ -23,16 +16,22 @@ public class Clothing {
     }
 
     public Clothing(String name, String description, double price, String imageUrl, String size, String color, int quantityInStock) {
-        this.name = name;
+        super(name, imageUrl, price);
         this.description = description;
-        this.price = price;
-        this.imageUrl = imageUrl;
         this.size = size;
         this.color = color;
         this.quantityInStock = quantityInStock;
     }
 
     // existing getters and setters...
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public String getSize() {
         return size;
@@ -56,45 +55,5 @@ public class Clothing {
 
     public void setQuantityInStock(int quantityInStock) {
         this.quantityInStock = quantityInStock;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
     }
 }
