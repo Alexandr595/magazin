@@ -1,5 +1,6 @@
 package com.example.artshop.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -7,9 +8,16 @@ import javax.persistence.Table;
 @Table(name = "clothing")
 public class Clothing extends Product {
 
+    @Column(name = "description")
     private String description;
+
+    @Column(name = "size")
     private String size;
+
+    @Column(name = "color")
     private String color;
+
+    @Column(name = "quantity_in_stock")
     private int quantityInStock;
 
     public Clothing() {
