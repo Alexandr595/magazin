@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin - Edit Painting</title>
+</head>
+<body>
+<h1>Edit Painting</h1>
+<form action="/admin/paintings" method="post">
+    <input type="hidden" th:value="${painting.id}" name="id">
+    <label>
+        Painting Name:
+        <input type="text" th:value="${painting.name}" name="name" required>
+    </label>
+    <label>
+        Image URL:
+        <input type="text" th:value="${painting.imageUrl}" name="imageUrl" required>
+    </label>
+    <button type="submit">Update</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home</title>
+</head>
+<body>
+<h1>Welcome, <span th:text="${#authentication.name}">User</span>!</h1>
+
+<!-- Добавленная форма выхода -->
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Log out" />
+</form>
+
+</body>
+</html>

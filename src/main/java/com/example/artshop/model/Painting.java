@@ -20,18 +20,20 @@ public class Painting extends Product {
     @Column(name = "year_created")
     private int yearCreated;
 
+    @Column(name = "image_url")
+    private String imageUrl;
+
     public Painting() {
     }
 
-    public Painting(String title, String artist, double width, double height, String imageURL, double price, int yearCreated) {
-        super(title, imageURL, price);
+    public Painting(String title, String artist, double width, double height, String imageUrl, double price, int yearCreated) {
+        super(title, imageUrl, price);
         this.artist = artist;
         this.width = width;
         this.height = height;
         this.yearCreated = yearCreated;
+        this.imageUrl = imageUrl;
     }
-
-    // Getters and setters
 
     public String getArtist() {
         return artist;
@@ -63,6 +65,14 @@ public class Painting extends Product {
 
     public void setYearCreated(int yearCreated) {
         this.yearCreated = yearCreated;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }
 // Этот класс представляет сущность Painting, которая будет сохраняться в базе данных.

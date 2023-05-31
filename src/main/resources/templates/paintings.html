@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin - All Paintings</title>
+</head>
+<body>
+<h1>All Paintings</h1>
+<a href="/admin/paintings/new">Create New Painting</a>
+<ul>
+    <li th:each="painting : ${paintings}">
+        <p th:text="${painting.name}"></p>
+        <img th:src="${painting.imageUrl}">
+        <a th:href="@{'/admin/paintings/edit/' + ${painting.id}}">Edit</a>
+        <a th:href="@{'/admin/paintings/delete/' + ${painting.id}}">Delete</a>
+    </li>
+</ul>
+</body>
+</html>

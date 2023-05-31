@@ -22,8 +22,12 @@ public class RegistrationController {
     }
 
     @PostMapping
-    public ResponseEntity<User> register(@RequestBody User user) {
-        User savedUser = userService.register(user);
-        return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
+    public ResponseEntity<?> register(@RequestBody User user) {
+        boolean isRegistered = userService.register(user);
+        if(isRegistered) {
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        } else {
+            return new ResponseEntity<>("User with the same username already exists", HttpStatus.BAD_REQUEST);
+        }
     }
 }

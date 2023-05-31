@@ -1,4 +1,5 @@
 package com.example.artshop.controller;
+
 import com.example.artshop.model.Painting;
 import com.example.artshop.service.PaintingService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,13 +48,13 @@ public class PaintingController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Object> deletePainting(@PathVariable Long id) {
+    public ResponseEntity<Void> deletePainting(@PathVariable Long id) {
         return paintingService.findById(id)
                 .map(painting -> {
                     paintingService.deleteById(id);
-                    return ResponseEntity.noContent().build();
+                    return new ResponseEntity<Void>(HttpStatus.OK);
                 })
-                .orElse(ResponseEntity.notFound().build());
+                .orElse(new ResponseEntity<Void>(HttpStatus.NOT_FOUND));
     }
 }
 // В этом классе используются аннотации @RestController и @RequestMapping, которые указывают на то,
